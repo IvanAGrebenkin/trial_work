@@ -5,7 +5,7 @@ PreferredSizeWidget appBar(context, pageName) => AppBar(
   actions: <Widget>[
     IconButton(
     tooltip: 'Переход на главный экран',
-      onPressed: (){Navigator.pushNamed(context, '/');},
-      icon: const Icon(Icons.account_circle),),// Кнопка перехода на главный экран
+      onPressed: (){Navigator.pop(context);},
+      icon: const Icon(Icons.home),),// Кнопка перехода на главный экран
 ]
 );

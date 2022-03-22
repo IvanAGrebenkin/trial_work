@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../Utils/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -20,8 +18,6 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: Column(
           children: [
-            const SizedBox(height: 50,),
-            const Text('Кнопка перехода в счетчик'),
             const SizedBox(height: 50,),
             SizedBox(width:200, height:42,
               child: ElevatedButton(
@@ -42,11 +38,10 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.circular(36.0)),
                 ),
               ),
-            ),// Кнопка инкремента счетчика 1
+            ),// Кнопка перехода на экран стандартного счетчика
           ],
         ),
       ),
-      );
-
+    );
   }
 }
