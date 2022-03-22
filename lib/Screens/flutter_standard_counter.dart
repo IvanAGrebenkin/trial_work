@@ -16,6 +16,8 @@ class FlutterStandardCounterPage extends StatefulWidget {
 class _FlutterStandardCounterPageState extends State<FlutterStandardCounterPage> {
   int _counter = 0;
 
+  get pageName => 'Стандартный счетчик';
+
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -27,11 +29,7 @@ class _FlutterStandardCounterPageState extends State<FlutterStandardCounterPage>
     return MaterialApp(
       theme: themeOfHomePage(),
       home: Scaffold(
-        appBar: myAppBar('Стандартный счетчик'),
-        // appBar: AppBar(
-        //   title: Text(widget.title),
-        // ),
-
+        appBar: appBar(context, pageName),
         body: Center(
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.

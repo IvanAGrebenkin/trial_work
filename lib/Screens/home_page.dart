@@ -10,10 +10,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  get pageName => 'Начльная страница';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar('Начальная страница'),
+      appBar: appBar(context, pageName),
       body: Center(
         child: Column(
           children: [
