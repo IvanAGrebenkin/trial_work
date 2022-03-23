@@ -47,7 +47,7 @@ class _FlutterStandardCounterPageState extends State<FlutterStandardCounterPage>
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: _incrementCounter,
-          tooltip: 'Increment',
+          tooltip: '+1 к значению',
           child: const Icon(Icons.add),
         ),
       ),

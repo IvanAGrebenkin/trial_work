@@ -36,7 +36,29 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.all(10),
                   primary: Colors.lightGreen,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(36.0)),
+                      borderRadius: BorderRadius.circular(15.0)),
+                ),
+              ),
+            ),// Кнопка перехода на экран стандартного счетчика
+            const SizedBox(height: 50,),
+            SizedBox(width:250, height:55,
+              child: ElevatedButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, '/drop_down_button');
+                },
+                child: const Text('Переход к кнопке DropdownButton',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    inherit: false,
+                    fontSize:16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.all(10),
+                  // primary: Colors.lightGreen,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0)),
                 ),
               ),
             ),// Кнопка перехода на экран стандартного счетчика

@@ -59,37 +59,25 @@ Widget navDrawer(context) => Drawer(
               ],
             ),
           )),
-      // ListTile(
-      //   leading: const Icon(Icons.account_circle),
-      //   title: const Text('Главный экран'),
-      //   onTap: (){
-      //     // Navigator.pushNamed(context, '/flutter_standard_counter');
-      //   },
-      // ),
-      // ListTile(
-      //   leading: const Icon(CupertinoIcons.circle_grid_3x3_fill),
-      //   title: const Text('Калькулятор'),
-      //   onTap: (){
-      //     // Navigator.pushNamed(context, '/flutter_standard_counter');
-      //   },
-      // ),
       ListTile(
-        leading: const Icon(CupertinoIcons.add_circled),
+        leading: const Icon(CupertinoIcons.add_circled,
+          color: Colors.lightGreen,),
         title: const Text('Стандартный счетчик'),
         onTap: (){
           Navigator.pushNamed(context, '/flutter_standard_counter');
         },
       ),// Кнопка перехода на экран счетчика
+      ListTile(
+        leading: const Icon(CupertinoIcons.down_arrow),
+        title: const Text('DropdownButton'),
+        onTap: (){
+          Navigator.pushNamed(context, '/drop_down_button');
+        },
+      ),// Кнопка перехода к DropdownButton
       const Divider(
         thickness: 2,
       ),
-      ListTile(
-        leading: Icon(Icons.home),
-        title: Text('Выйти из аккаунта'),
-        onTap: (){
-          Navigator.pop(context);
-          },
-      ),// Кнопка выхода из учетной записи
+
     ],
   ),
 );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trial_work/Screens/home_page.dart';
+import 'Screens/drop_down_button.dart';
 import 'Screens/flutter_standard_counter.dart';
 
 
@@ -22,6 +23,7 @@ class _TrialWorkAppState extends State<TrialWorkApp> {
       routes: {
         '/': (context) => const HomePage(),
         '/flutter_standard_counter': (context) => const FlutterStandardCounterPage(),
+        '/drop_down_button': (context) => const MyDropdownButton(),
       },
     );
   }
