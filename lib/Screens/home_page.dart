@@ -14,17 +14,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context, pageName),
+      appBar: myAppBar(context, pageName),
       body: Center(
         child: Column(
           children: [
             const SizedBox(height: 50,),
-            SizedBox(width:200, height:42,
+            SizedBox(width:250, height:55,
               child: ElevatedButton(
                 onPressed: (){
                   Navigator.pushNamed(context, '/flutter_standard_counter');
                 },
-                child: const Text('Переход в счетчик',
+                child: const Text('Переход в стандартный счетчик',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     inherit: false,
                     fontSize:16,

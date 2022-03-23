@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:trial_work/Screens/home_page.dart';
 import 'Screens/flutter_standard_counter.dart';
 
-//
 
 void main() {runApp(const TrialWorkApp());}
 

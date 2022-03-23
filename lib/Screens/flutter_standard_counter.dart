@@ -30,6 +30,7 @@ class _FlutterStandardCounterPageState extends State<FlutterStandardCounterPage>
       theme: themeOfFlutterStandardCounter(),
       home: Scaffold(
         appBar: appBar(context, pageName),
+        drawer: navDrawer(context),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
