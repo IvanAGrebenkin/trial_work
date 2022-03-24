@@ -13,8 +13,6 @@ class MyDropdownButton extends StatefulWidget {
 class _MyDropdownButtonState extends State<MyDropdownButton> {
   get pageName => 'DropdownButton';
 
-
-
   get items1 => <String>['...', 'Один', 'Два', 'Три', 'Четыре', ];
   get items2 => <String>['...', 'Пять', 'Шесть', 'Семь', 'Восемь', ];
 
@@ -45,9 +43,6 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
                   dropdownValue1 = newValue!;
                   if (newValue == '...') {dropdownValue2 = '...'; a=true;} else{a=false;}
                 });},
-                // onChanged: (String? newValue){ setState(() {
-                //   dropdownValue1 = newValue!;
-                // });},
               ),
               const SizedBox(height: 50,),
               const Text('Выпадающий список №2:'),

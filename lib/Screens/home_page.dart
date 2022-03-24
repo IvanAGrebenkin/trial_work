@@ -11,6 +11,8 @@ class _HomePageState extends State<HomePage> {
 
   get pageName => 'Начльная страница';
 
+  get dropdownValue1 => null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +42,9 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),// Кнопка перехода на экран стандартного счетчика
-            const SizedBox(height: 50,),
+            const SizedBox(height: 25,),
+            const Divider(),
+            const SizedBox(height: 25,),
             SizedBox(width:250, height:55,
               child: ElevatedButton(
                 onPressed: (){
@@ -62,6 +66,19 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),// Кнопка перехода на экран стандартного счетчика
+            const SizedBox(height: 25,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 50.0),
+              child: Text('В списке 1 выбранно: "$dropdownValue1",',
+                textAlign: TextAlign.center,),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 50.0),
+              child: Text('а в списке 2 выбрано: "$dropdownValue1"',
+                textAlign: TextAlign.center,),
+            ),
+            const SizedBox(height: 25,),
+            const Divider(),
           ],
         ),
       ),
