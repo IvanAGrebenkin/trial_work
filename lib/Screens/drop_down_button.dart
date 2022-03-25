@@ -13,7 +13,7 @@ class MyDropdownButton extends StatefulWidget {
 
 class _MyDropdownButtonState extends State<MyDropdownButton> {
   get pageName => 'DropdownButton'; // Заголовок в AppBar
-
+  bool isVisible = false;
   bool ignoreNameList = true;// Переменная для выключения списка наименования изделия
 
 
@@ -42,11 +42,11 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
                       );}).toList(),
                 onChanged: (String? newValue){ setState(() {
                   groupValue = newValue!;
-                  if (newValue == '...') {productNameValue = '...'; ignoreNameList=true;}
-                  else if (newValue == 'Кастрюли'){namesList=pans;productNameValue = '...'; ignoreNameList=false;}
-                  else if (newValue == 'Чайники'){namesList=teapots;productNameValue = '...'; ignoreNameList=false;}
-                  else if (newValue == 'Хозяйственные изделия'){namesList=householdProducts;productNameValue = '...'; ignoreNameList=false;}
-                  else if (newValue == 'Плоские изделия'){namesList=flatProducts;productNameValue = '...'; ignoreNameList=false;}
+                  if (newValue == '...') {productNameValue = '...'; isVisible = false;ignoreNameList=true;}
+                  else if (newValue == 'Кастрюли'){namesList=pans;productNameValue = '...'; isVisible = false;ignoreNameList=false;}
+                  else if (newValue == 'Чайники'){namesList=teapots;productNameValue = '...'; isVisible = false;ignoreNameList=false;}
+                  else if (newValue == 'Хозяйственные изделия'){namesList=householdProducts;productNameValue = '...'; isVisible = false;ignoreNameList=false;}
+                  else if (newValue == 'Плоские изделия'){namesList=flatProducts;productNameValue = '...'; isVisible = false;ignoreNameList=false;}
                   // else { ignore=false;}
                 });},
               ),
@@ -60,8 +60,10 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
                       value: value,
                       child: Text(value),
                     );}).toList(),
-                  onChanged: (String? newValue){ setState(() {
-                    productNameValue = newValue!;
+                  onChanged: (String? newValue1){ setState(() {
+                    productNameValue = newValue1!;
+                    if (productNameValue == '...') {isVisible = false;}
+                    else {isVisible = true;}
                   });},
                 ),
               ),
@@ -74,6 +76,29 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
                 child: Text('Наименование изделия: "$productNameValue"',
                   textAlign: TextAlign.center,),
               ),
+              const SizedBox(height: 50,),
+              Visibility(
+                visible: isVisible,
+                child: SizedBox(width:250, height:55,
+                  child: ElevatedButton(
+                    onPressed: (){},
+                    child: const Text('Появляющаяся кнопка',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        inherit: false,
+                        fontSize:16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(10),
+                      // primary: Colors.lightGreen,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0)),
+                    ),
+                  ),
+                ),
+              ),// Появляющаяся кнопка
             ],
           ),
         ),
