@@ -13,7 +13,7 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
 
   get pageName => 'DropdownButton';
 
-  List <String> groups = <String>['...', 'Кастрюли', 'Чайники', 'Хозяйственные изделия', 'Плоские изделия', ];
+  List <String> groups = <String>['...', 'Кастрюли', 'Чайники', 'Хозяйственные изделия',];
   List <String> pans = <String>['...', 'Кастрюля с ободком', 'Кастрюля без ободка', 'Позница', ];
   List <String> teapots = <String>['...', 'Чайник цельнотянутый', 'Чайник с закатным дном', 'Заварник', ];
   List <String> householdProducts = <String>[
@@ -29,13 +29,15 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
     'Горшок ночной',
   ];
 
-  get items1 => groups;
+  List <String> a2 = <String>['...'];
 
-  get items2 => pans;
+  get items1 => groups;
+  get items2 => a2;
 
   String dropdownValue1 = '...';
   String dropdownValue2 = '...';
   bool ignore = true;
+
 
 
 
@@ -56,7 +58,7 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
               const Text('Группа изделий:'),
               DropdownButton(
                 value: dropdownValue1,
-                  items: items1.map<DropdownMenuItem<String>>((String value) {
+                items: items1.map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
                         child: Text(value),
@@ -64,6 +66,9 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
                 onChanged: (String? newValue){ setState(() {
                   dropdownValue1 = newValue!;
                   if (newValue == '...') {dropdownValue2 = '...'; ignore=true;}
+                  else if (newValue == 'Кастрюли'){a2=pans;ignore=false;}
+                  else if (newValue == 'Чайники'){a2=teapots;ignore=false;}
+                  else if (newValue == 'Хозяйственные изделия'){a2=householdProducts;ignore=false;}
                   else { ignore=false;}
                 });},
               ),
