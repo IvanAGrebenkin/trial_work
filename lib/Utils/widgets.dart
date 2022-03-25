@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -77,7 +78,13 @@ Widget navDrawer(context) => Drawer(
       const Divider(
         thickness: 2,
       ),
+      ListTile(
+        leading: const Icon(Icons.exit_to_app),
+        title: const Text('Выйти из приложения'),
+        onTap: (){SystemChannels.platform.invokeMethod('SystemNavigator.pop');},
+      ),// Кнопка выхода из приложения
 
     ],
   ),
 );
+
