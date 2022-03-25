@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trial_work/Utils/widgets.dart';
+
+import '../Utils/lists.dart';
 //
 
 class MyDropdownButton extends StatefulWidget {
@@ -10,42 +12,16 @@ class MyDropdownButton extends StatefulWidget {
 }
 
 class _MyDropdownButtonState extends State<MyDropdownButton> {
+  get pageName => 'DropdownButton'; // Заголовок в AppBar
 
-  get pageName => 'DropdownButton';
-
-  List <String> groups = <String>['...', 'Кастрюли', 'Чайники', 'Хозяйственные изделия','Плоские изделия'];
-  List <String> pans = <String>['...', 'Кастрюля с ободком', 'Кастрюля без ободка', 'Позница', ];
-  List <String> teapots = <String>['...', 'Чайник цельнотянутый', 'Чайник с закатным дном', 'Заварник', ];
-  List <String> householdProducts = <String>[
-    '...',
-    'Кружка',
-    'Бак',
-    'Ведро сварное',
-    'Ведро цельнотянутое',
-    'Ковш',
-    'Ковш с крышкой',
-    'Дуршлаг',
-    'Бидон',
-    'Горшок ночной',
-  ];
-  List <String> flatProducts = <String>['...', 'Таз', 'Миска', 'Блюдо', ];
-
-  List <String> groupChoice = <String>['...'];
-
-  get items1 => groups;
-  get items2 => groupChoice;
-
-  String dropdownValue1 = '...';
-  String dropdownValue2 = '...';
-  bool ignore = true;
+  bool ignoreNameList = true;// Переменная для выключения списка наименования изделия
 
 
+  List <String> namesList = <String>['...'];// Переменная для определения необходимого списка с наименованиями изделий
+  String groupValue = '...';// Переменная для хранения выбранного значения в списке группы изделий
+  String productNameValue = '...';// Переменная для хранения выбранного значения в списке наименования изделия
 
 
-
-
-
-  // if (dropdownValue1 == 'Кастрюли') { List <String> items2 => <String>['...', 'Пять', 'Шесть', 'Семь', 'Восемь', ];}
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -58,44 +34,44 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
               const SizedBox(height: 50,),
               const Text('Группа изделий:'),
               DropdownButton(
-                value: dropdownValue1,
-                items: items1.map<DropdownMenuItem<String>>((String value) {
+                value: groupValue,
+                items: groupsList.map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
                         child: Text(value),
                       );}).toList(),
                 onChanged: (String? newValue){ setState(() {
-                  dropdownValue1 = newValue!;
-                  if (newValue == '...') {dropdownValue2 = '...'; ignore=true;}
-                  else if (newValue == 'Кастрюли'){groupChoice=pans;dropdownValue2 = '...'; ignore=false;}
-                  else if (newValue == 'Чайники'){groupChoice=teapots;dropdownValue2 = '...'; ignore=false;}
-                  else if (newValue == 'Хозяйственные изделия'){groupChoice=householdProducts;dropdownValue2 = '...'; ignore=false;}
-                  else if (newValue == 'Плоские изделия'){groupChoice=flatProducts;dropdownValue2 = '...'; ignore=false;}
+                  groupValue = newValue!;
+                  if (newValue == '...') {productNameValue = '...'; ignoreNameList=true;}
+                  else if (newValue == 'Кастрюли'){namesList=pans;productNameValue = '...'; ignoreNameList=false;}
+                  else if (newValue == 'Чайники'){namesList=teapots;productNameValue = '...'; ignoreNameList=false;}
+                  else if (newValue == 'Хозяйственные изделия'){namesList=householdProducts;productNameValue = '...'; ignoreNameList=false;}
+                  else if (newValue == 'Плоские изделия'){namesList=flatProducts;productNameValue = '...'; ignoreNameList=false;}
                   // else { ignore=false;}
                 });},
               ),
               const SizedBox(height: 50,),
               const Text('Наименование изделия:'),
               IgnorePointer(
-                ignoring: ignore,
+                ignoring: ignoreNameList,
                 child: DropdownButton(
-                  value: dropdownValue2,
-                  items: items2.map<DropdownMenuItem<String>>((String value) {return DropdownMenuItem<String>(
+                  value: productNameValue,
+                  items: namesList.map<DropdownMenuItem<String>>((String value) {return DropdownMenuItem<String>(
                       value: value,
                       child: Text(value),
                     );}).toList(),
                   onChanged: (String? newValue){ setState(() {
-                    dropdownValue2 = newValue!;
+                    productNameValue = newValue!;
                   });},
                 ),
               ),
               const SizedBox(height: 50,),
-              Text('Группа изделий: "$dropdownValue1",',
+              Text('Группа изделий: "$groupValue",',
                 textAlign: TextAlign.start,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50.0),
-                child: Text('Наименование изделия: "$dropdownValue2"',
+                child: Text('Наименование изделия: "$productNameValue"',
                   textAlign: TextAlign.center,),
               ),
             ],
