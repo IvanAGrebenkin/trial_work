@@ -13,7 +13,7 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
 
   get pageName => 'DropdownButton';
 
-  List <String> groups = <String>['...', 'Кастрюли', 'Чайники', 'Хозяйственные изделия',];
+  List <String> groups = <String>['...', 'Кастрюли', 'Чайники', 'Хозяйственные изделия','Плоские изделия'];
   List <String> pans = <String>['...', 'Кастрюля с ободком', 'Кастрюля без ободка', 'Позница', ];
   List <String> teapots = <String>['...', 'Чайник цельнотянутый', 'Чайник с закатным дном', 'Заварник', ];
   List <String> householdProducts = <String>[
@@ -28,11 +28,12 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
     'Бидон',
     'Горшок ночной',
   ];
+  List <String> flatProducts = <String>['...', 'Таз', 'Миска', 'Блюдо', ];
 
-  List <String> a2 = <String>['...'];
+  List <String> groupChoice = <String>['...'];
 
   get items1 => groups;
-  get items2 => a2;
+  get items2 => groupChoice;
 
   String dropdownValue1 = '...';
   String dropdownValue2 = '...';
@@ -66,10 +67,11 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
                 onChanged: (String? newValue){ setState(() {
                   dropdownValue1 = newValue!;
                   if (newValue == '...') {dropdownValue2 = '...'; ignore=true;}
-                  else if (newValue == 'Кастрюли'){a2=pans;ignore=false;}
-                  else if (newValue == 'Чайники'){a2=teapots;ignore=false;}
-                  else if (newValue == 'Хозяйственные изделия'){a2=householdProducts;ignore=false;}
-                  else { ignore=false;}
+                  else if (newValue == 'Кастрюли'){groupChoice=pans;dropdownValue2 = '...'; ignore=false;}
+                  else if (newValue == 'Чайники'){groupChoice=teapots;dropdownValue2 = '...'; ignore=false;}
+                  else if (newValue == 'Хозяйственные изделия'){groupChoice=householdProducts;dropdownValue2 = '...'; ignore=false;}
+                  else if (newValue == 'Плоские изделия'){groupChoice=flatProducts;dropdownValue2 = '...'; ignore=false;}
+                  // else { ignore=false;}
                 });},
               ),
               const SizedBox(height: 50,),
