@@ -5,12 +5,6 @@ import 'package:flutter/material.dart';
 // AppBar для начальной страницы (без кнопок действия)
 PreferredSizeWidget myAppBar(context, pageName) => AppBar(
   title: Text('$pageName'),
-  // actions: <Widget>[
-  //   IconButton(
-  //     tooltip: 'Переход на главный экран',
-  //     onPressed: (){Navigator.pop(context);},
-  //     icon: const Icon(Icons.arrow_back),),// Кнопка перехода на главный экран
-  // ]
 );
 
 
@@ -27,6 +21,10 @@ PreferredSizeWidget appBar(context, pageName) => AppBar(
     ),
   title: Center(child: Text('$pageName',)),
   actions: <Widget>[
+    IconButton(
+      tooltip: 'На начальную страницу',
+      onPressed: (){Navigator.pushNamed(context, '/');},
+      icon: const Icon(Icons.home),),// Кнопка перехода на главный экран
     IconButton(
     tooltip: 'На предыдущую страницу',
       onPressed: (){Navigator.pop(context);},
