@@ -10,7 +10,7 @@ class DrawingScreen extends StatefulWidget {
 }
 
 class _DrawingScreenState extends State<DrawingScreen> {
-  String a ='lib/Drawings/2340x1300.png';
+  String a ='lib/Drawings/Корпус.webp';// Переменная для загрузки изображения
   get pageName => 'Просмотр чертежа'; // Заголовок в AppBar
   @override
   Widget build(BuildContext context) {
