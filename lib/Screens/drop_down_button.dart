@@ -15,6 +15,7 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
   get pageName => 'DropdownButton'; // Заголовок в AppBar
 
   // Переменне
+  bool _isDisable=true;// Переменная активности второго списка
   bool isVisible = false;// Переменная видимости кнопки
   bool ignoreNameList = true;// Переменная для выключения списка наименования изделия
   List <String> namesList = <String>['...'];// Переменная для определения необходимого списка с наименованиями изделий
@@ -42,30 +43,27 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
                       );}).toList(),
                 onChanged: (String? newValue){ setState(() {
                   groupValue = newValue!;
-                  if (newValue == '...') {productNameValue = '...'; isVisible = false;ignoreNameList=true;}
-                  else if (newValue == 'Кастрюли'){namesList=pans;productNameValue = '...'; isVisible = false;ignoreNameList=false;}
-                  else if (newValue == 'Чайники'){namesList=teapots;productNameValue = '...'; isVisible = false;ignoreNameList=false;}
-                  else if (newValue == 'Хозяйственные изделия'){namesList=householdProducts;productNameValue = '...'; isVisible = false;ignoreNameList=false;}
-                  else if (newValue == 'Плоские изделия'){namesList=flatProducts;productNameValue = '...'; isVisible = false;ignoreNameList=false;}
+                  if (newValue == '...') {productNameValue = '...'; _isDisable = true; isVisible=false;}
+                  else if (newValue == 'Кастрюли'){namesList=pans;productNameValue = '...'; _isDisable = false;isVisible=false;}
+                  else if (newValue == 'Чайники'){namesList=teapots;productNameValue = '...'; _isDisable = false;isVisible=false;}
+                  else if (newValue == 'Хозяйственные изделия'){namesList=householdProducts;productNameValue = '...'; _isDisable = false;isVisible=false;}
+                  else if (newValue == 'Плоские изделия'){namesList=flatProducts;productNameValue = '...'; _isDisable = false;isVisible=false;}
                   // else { ignore=false;}
                 });},
               ),
               const SizedBox(height: 50,),
               const Text('Наименование изделия:'),
-              IgnorePointer(
-                ignoring: ignoreNameList,
-                child: DropdownButton(
-                  value: productNameValue,
-                  items: namesList.map<DropdownMenuItem<String>>((String value) {return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );}).toList(),
-                  onChanged: (String? newValue1){ setState(() {
-                    productNameValue = newValue1!;
-                    if (productNameValue == '...') {isVisible = false;}
-                    else {isVisible = true;}
-                  });},
-                ),
+              DropdownButton(
+                value: productNameValue,
+                items: namesList.map<DropdownMenuItem<String>>((String value) {return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );}).toList(),
+                onChanged: _isDisable? null : (String? newValue1){ setState(() {
+                  productNameValue = newValue1!;
+                  if (productNameValue == '...') {isVisible = false;}
+                  else {isVisible = true;}
+                });},
               ),
               const SizedBox(height: 50,),
               Text('Группа изделий: "$groupValue",',
