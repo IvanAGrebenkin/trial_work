@@ -69,17 +69,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),// Кнопка перехода на экран стандартного счетчика
             const SizedBox(height: 25,),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50.0),
-              child: Text('В списке 1 выбранно: "$groupValue",',
-                textAlign: TextAlign.center,),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50.0),
-              child: Text('а в списке 2 выбрано: "$groupValue"',
-                textAlign: TextAlign.center,),
-            ),
-            const SizedBox(height: 25,),
             const Divider(),
           ],
         ),
