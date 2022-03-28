@@ -3,10 +3,17 @@ import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
 
 
-// AppBar для начальной страницы (без кнопок действия)
+// AppBar для начальной страницы (с кнопкой выхода из приложения)
 PreferredSizeWidget myAppBar(context, pageName) => AppBar(
   title: Text('$pageName'),
+    actions: <Widget>[
+      IconButton(
+        tooltip: 'Выйти из приложения',
+        onPressed: (){SystemChannels.platform.invokeMethod('SystemNavigator.pop');},// Функция закрытия приложения
+        icon: const Icon(Icons.exit_to_app),),// Кнопка выхода из приложения
+    ]
 );
+
 // AppBar для последующих страниц
 PreferredSizeWidget appBar(context, pageName) => AppBar(
   leading: Builder(
@@ -30,7 +37,9 @@ PreferredSizeWidget appBar(context, pageName) => AppBar(
       icon: const Icon(Icons.arrow_back),),// Кнопка перехода на главный экран
 ]
 );
-// AppBar для страницы, на которую передается аргумент
+
+// AppBar для страницы, на которую передается аргумент (создано, т.к. не
+//   входил заголовок при стандартном стиле отображения текста)
 PreferredSizeWidget appBarPassArgumentsScreen(context, pageName) => AppBar(
     leading: Builder(
       builder: (BuildContext context) {
@@ -44,7 +53,7 @@ PreferredSizeWidget appBarPassArgumentsScreen(context, pageName) => AppBar(
     title: Center(
         child: Text('$pageName',
           maxLines: 2,
-          style: TextStyle(fontSize: 20,),
+          style: const TextStyle(fontSize: 20,),
           // style: TextStyle(
           //   fontWeight: FontWeight(),
           // ),
@@ -61,7 +70,6 @@ PreferredSizeWidget appBarPassArgumentsScreen(context, pageName) => AppBar(
         icon: const Icon(Icons.arrow_back),),// Кнопка перехода на главный экран
     ]
 );
-
 
 // Панель navDrawer
 Widget navDrawer(context) => Drawer(
@@ -83,11 +91,11 @@ Widget navDrawer(context) => Drawer(
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(50.0)),
                   ),
-                  // child: const Image(image: AssetImage('assets/dart-logo 1.png'),),
                 ),
               ],
             ),
-          )),
+          ),
+      ),
       ListTile(
         leading: const Icon(CupertinoIcons.add_circled,
           color: Colors.lightGreen,),
@@ -111,8 +119,6 @@ Widget navDrawer(context) => Drawer(
         title: const Text('Выйти из приложения'),
         onTap: (){SystemChannels.platform.invokeMethod('SystemNavigator.pop');},
       ),// Кнопка выхода из приложения
-
     ],
   ),
 );
-

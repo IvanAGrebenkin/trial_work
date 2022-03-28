@@ -1,24 +1,38 @@
 import 'package:flutter/material.dart';
-
 import '../Utils/widgets.dart';
 
-class PassArgumentsScreen extends StatefulWidget {
-  const PassArgumentsScreen({Key? key}) : super(key: key);
+// Класс для объявления передаваемых аргумнтов
+class PassedArguments {
+  final String firstArgument;
+  final String secondArgument;
 
-  @override
-  State<PassArgumentsScreen> createState() => _PassArgumentsScreenState();
+  PassedArguments(this.firstArgument, this.secondArgument);
 }
 
-class _PassArgumentsScreenState extends State<PassArgumentsScreen> {
-  get pageName => 'Страница для передачи аргумента';
+class PassArgumentsScreen extends StatelessWidget {
+  const PassArgumentsScreen({Key? key}) : super(key: key);
+  get pageName => 'Страница для передачи аргумента';// Заголовок для AppBar
+
+
+  static const routeName = '/pass_arguments_screen';// Маршрут куда передаются аргументы
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: appBarPassArgumentsScreen(context, pageName),
-        drawer: navDrawer(context),
-        body: Column(),
+
+    // Метод для доступа к класу, в котором объявлены передаваемые аргументы
+    final args = ModalRoute.of(context)!.settings.arguments as PassedArguments;
+
+    return Scaffold(appBar: appBarPassArgumentsScreen(context, pageName),
+      drawer: navDrawer(context),
+      body: Center(
+        child: Column(
+            children: [
+              const SizedBox(height:40,),
+              Text('Значение 1го переданного аргумента: ${args.firstArgument}'),// Вывод передаваемого аргумента
+              const SizedBox(height:40,),
+              Text('Значение 2го переданного аргумента: ${args.secondArgument}'),// Вывод передаваемого аргумента
+            ]
+        ),
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'Screens/flutter_standard_counter.dart';
 import 'Screens/pass_arguments_screen.dart';
 
 
+
 // void main() {runApp(const PassArgumentsScreen());}
 void main() {runApp(const TrialWorkApp());}
 
@@ -19,13 +20,13 @@ class _TrialWorkAppState extends State<TrialWorkApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Trial Work',
       initialRoute: '/',
       routes: {
         '/': (context) => const HomePage(),
         '/flutter_standard_counter': (context) => const FlutterStandardCounterPage(),
         '/drop_down_button': (context) => const MyDropdownButton(),
-        '/pass_arguments_screen': (context) => const PassArgumentsScreen(),
+        PassArgumentsScreen.routeName: (context) => const PassArgumentsScreen(),
       },
     );
   }

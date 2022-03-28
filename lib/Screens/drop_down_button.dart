@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:trial_work/Screens/pass_arguments_screen.dart';
 import 'package:trial_work/Utils/widgets.dart';
-
 import '../Utils/lists.dart';
-//
+
 
 class MyDropdownButton extends StatefulWidget {
   const MyDropdownButton({Key? key}) : super(key: key);
@@ -13,10 +13,10 @@ class MyDropdownButton extends StatefulWidget {
 
 class _MyDropdownButtonState extends State<MyDropdownButton> {
   get pageName => 'DropdownButton'; // Заголовок в AppBar
-  bool isVisible = false;
+
+  // Переменне
+  bool isVisible = false;// Переменная видимости кнопки
   bool ignoreNameList = true;// Переменная для выключения списка наименования изделия
-
-
   List <String> namesList = <String>['...'];// Переменная для определения необходимого списка с наименованиями изделий
   String groupValue = '...';// Переменная для хранения выбранного значения в списке группы изделий
   String productNameValue = '...';// Переменная для хранения выбранного значения в списке наименования изделия
@@ -81,7 +81,16 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
                 visible: isVisible,
                 child: SizedBox(width:250, height:55,
                   child: ElevatedButton(
-                    onPressed: (){Navigator.pushNamed(context, '/pass_arguments_screen');},
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        PassArgumentsScreen.routeName,
+                        arguments: PassedArguments(
+                          groupValue,
+                          productNameValue,
+                        ),
+                      );
+                    },
                     child: const Text('Появляющаяся кнопка',
                       textAlign: TextAlign.center,
                       style: TextStyle(
