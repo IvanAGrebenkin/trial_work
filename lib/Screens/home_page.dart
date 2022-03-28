@@ -69,6 +69,27 @@ class _HomePageState extends State<HomePage> {
               ),
             ),// Кнопка перехода на экран стандартного счетчика
             const SizedBox(height: 25,),
+            const Divider(),            const SizedBox(height: 25,),
+            SizedBox(width:250, height:55,
+              child: ElevatedButton(
+                onPressed: (){Navigator.pushNamed(context, '/drawing_screen');},
+                child: const Text('Показать чертеж',
+                  textAlign: TextAlign.center,
+                  // style: TextStyle(
+                  //   inherit: false,
+                  //   fontSize:16,
+                  //   fontWeight: FontWeight.w600,
+                  // ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.all(10),
+                  // primary: Colors.lightGreen,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0)),
+                ),
+              ),
+            ),// Кнопка перехода на экран чертежа
+            const SizedBox(height: 25,),
             const Divider(),
           ],
         ),

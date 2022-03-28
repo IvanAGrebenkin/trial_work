@@ -97,6 +97,14 @@ Widget navDrawer(context) => Drawer(
           ),
       ),
       ListTile(
+        leading: const Icon(Icons.home,
+          color: Colors.blue),
+        title: const Text('Начальный экран'),
+        onTap: (){
+          Navigator.pushNamed(context, '/');
+        },
+      ),// Кнопка перехода на начальный экран
+      ListTile(
         leading: const Icon(CupertinoIcons.add_circled,
           color: Colors.lightGreen,),
         title: const Text('Стандартный счетчик'),
@@ -105,17 +113,26 @@ Widget navDrawer(context) => Drawer(
         },
       ),// Кнопка перехода на экран счетчика
       ListTile(
-        leading: const Icon(CupertinoIcons.down_arrow),
+        leading: const Icon(CupertinoIcons.down_arrow,
+            color: Colors.blue),
         title: const Text('DropdownButton'),
         onTap: (){
           Navigator.pushNamed(context, '/drop_down_button');
         },
       ),// Кнопка перехода к DropdownButton
+      ListTile(
+        leading: const Icon(Icons.image,
+            color: Colors.blue),
+        title: const Text('Показать изображение'),
+        onTap: (){
+          Navigator.pushNamed(context, '/drawing_screen');
+        },
+      ),// Кнопка "Показать чертеж"
       const Divider(
         thickness: 2,
       ),
       ListTile(
-        leading: const Icon(Icons.exit_to_app),
+        leading: const Icon(Icons.exit_to_app,),
         title: const Text('Выйти из приложения'),
         onTap: (){SystemChannels.platform.invokeMethod('SystemNavigator.pop');},
       ),// Кнопка выхода из приложения
