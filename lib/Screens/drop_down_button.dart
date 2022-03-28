@@ -81,7 +81,7 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
                 visible: isVisible,
                 child: SizedBox(width:250, height:55,
                   child: ElevatedButton(
-                    onPressed: (){},
+                    onPressed: (){Navigator.pushNamed(context, '/pass_arguments_screen');},
                     child: const Text('Появляющаяся кнопка',
                       textAlign: TextAlign.center,
                       style: TextStyle(

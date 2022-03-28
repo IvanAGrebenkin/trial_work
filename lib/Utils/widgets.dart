@@ -1,13 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+
 
 // AppBar для начальной страницы (без кнопок действия)
 PreferredSizeWidget myAppBar(context, pageName) => AppBar(
   title: Text('$pageName'),
 );
-
-
 // AppBar для последующих страниц
 PreferredSizeWidget appBar(context, pageName) => AppBar(
   leading: Builder(
@@ -30,6 +29,37 @@ PreferredSizeWidget appBar(context, pageName) => AppBar(
       onPressed: (){Navigator.pop(context);},
       icon: const Icon(Icons.arrow_back),),// Кнопка перехода на главный экран
 ]
+);
+// AppBar для страницы, на которую передается аргумент
+PreferredSizeWidget appBarPassArgumentsScreen(context, pageName) => AppBar(
+    leading: Builder(
+      builder: (BuildContext context) {
+        return IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () { Scaffold.of(context).openDrawer(); },
+          tooltip: 'Открыть меню навигации',
+        );
+      },
+    ),
+    title: Center(
+        child: Text('$pageName',
+          maxLines: 2,
+          style: TextStyle(fontSize: 20,),
+          // style: TextStyle(
+          //   fontWeight: FontWeight(),
+          // ),
+        )
+    ),
+    actions: <Widget>[
+      IconButton(
+        tooltip: 'На начальную страницу',
+        onPressed: (){Navigator.pushNamed(context, '/');},
+        icon: const Icon(Icons.home),),// Кнопка перехода на главный экран
+      IconButton(
+        tooltip: 'На предыдущую страницу',
+        onPressed: (){Navigator.pop(context);},
+        icon: const Icon(Icons.arrow_back),),// Кнопка перехода на главный экран
+    ]
 );
 
 
