@@ -9,7 +9,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  get pageName => 'Начльная страница';
+  get pageName => 'Начальная страница';
 
   get groupValue => null;
 
@@ -67,9 +67,10 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.circular(15.0)),
                 ),
               ),
-            ),// Кнопка перехода на экран стандартного счетчика
+            ),// Кнопка перехода на экран DropdownButton
             const SizedBox(height: 25,),
-            const Divider(),            const SizedBox(height: 25,),
+            const Divider(),
+            const SizedBox(height: 25,),
             SizedBox(width:250, height:55,
               child: ElevatedButton(
                 onPressed: (){Navigator.pushNamed(context, '/drawing_screen');},

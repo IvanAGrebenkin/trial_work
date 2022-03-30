@@ -59,11 +59,13 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
                     value: value,
                     child: Text(value),
                   );}).toList(),
-                onChanged: _isDisable? null : (String? newValue1){ setState(() {
-                  productNameValue = newValue1!;
-                  if (productNameValue == '...') {isVisible = false;}
-                  else {isVisible = true;}
-                });},
+                onChanged: _isDisable? null : (String? newValue1){
+                  setState(() {
+                    productNameValue = newValue1!;
+                    if (productNameValue == '...') {isVisible = false;}
+                    else {isVisible = true;}
+                    });
+                  },
               ),
               const SizedBox(height: 50,),
               Text('Группа изделий: "$groupValue",',
